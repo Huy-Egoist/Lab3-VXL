@@ -21,6 +21,7 @@
 #include "main.h"
 #include "buttonlab3.h"
 #include "timerlab3.h"
+#include "fsm_automatic.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -90,25 +91,24 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM2_Init();
-  /* USER CODE BEGIN 2 */
 
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
   HAL_TIM_Base_Start_IT (& htim2 ) ;
-  setTimer0(50);
+
+  setTimer0(100);
   void testTimer(){
 	  if(timer0_flag == 1){
 		  HAL_GPIO_TogglePin(LED_Timer_GPIO_Port, LED_Timer_Pin);
-		  setTimer0(50);
+		  setTimer0(100);
 	  }
   }
-
+  status1 = INIT;
+  status2 = INIT;
   while (1)
   {
 	  //test LED_Timer 500ms
 	  testTimer();
+	  fsm_automatic_run1();
+	  fsm_automatic_run2();
   }
 }
 
