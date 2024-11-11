@@ -1,2 +1,2 @@
 fsm_automatic.c:10:6:fsm_automatic_run1	8	static
-fsm_automatic.c:55:6:fsm_automatic_run2	8	static
+fsm_automatic.c:51:6:fsm_automatic_run2	8	static

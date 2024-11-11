@@ -15,7 +15,7 @@ int KeyReg2 = NORMAL_STATE;
 int KeyReg3 = NORMAL_STATE;
 int timerforKeyPress = 200;
 
-int isButtonPressed(){
+int isButton1Pressed(){
 	if(Button1_flag == 1){
 		Button1_flag = 0;
 		return 1;

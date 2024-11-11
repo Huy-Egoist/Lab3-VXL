@@ -10,27 +10,25 @@
 void fsm_automatic_run1(){
 	switch(status1){
 		case INIT:
-			HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, GPIO_PIN_SET);
+			setINIT();
 
 			status1 = AUTO_RED;
 			setTimer1(500);
 			break;
 		case AUTO_RED:
-			HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, GPIO_PIN_RESET);
+			setRED1();
 
 			if(timer1_flag == 1){
 				status1 = AUTO_GREEN;
 				setTimer1(300);
 			}
+			if(isButton1Pressed() == 1){
+				status1 = MAN_RED;
+				setTimer1(1000);
+			}
 			break;
 		case AUTO_GREEN:
-			HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, GPIO_PIN_RESET);
+			setGREEN1();
 
 			if(timer1_flag == 1){
 				status1 = AUTO_YELLOW;
@@ -38,9 +36,7 @@ void fsm_automatic_run1(){
 			}
 			break;
 		case AUTO_YELLOW:
-			HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, GPIO_PIN_SET);
+			setYELLOW1();
 
 			if(timer1_flag == 1){
 				status1 = AUTO_RED;
@@ -55,17 +51,13 @@ void fsm_automatic_run1(){
 void fsm_automatic_run2(){
 	switch(status2){
 		case INIT:
-			HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, GPIO_PIN_SET);
+			setINIT();
 
 			status2 = AUTO_GREEN;
 			setTimer2(300);
 			break;
 		case AUTO_RED:
-			HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, GPIO_PIN_RESET);
+			setRED2();
 
 			if(timer2_flag == 1){
 				status2 = AUTO_GREEN;
@@ -73,9 +65,7 @@ void fsm_automatic_run2(){
 			}
 			break;
 		case AUTO_GREEN:
-			HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, GPIO_PIN_RESET);
+			setGREEN2();
 
 			if(timer2_flag == 1){
 				status2 = AUTO_YELLOW;
@@ -83,9 +73,7 @@ void fsm_automatic_run2(){
 			}
 			break;
 		case AUTO_YELLOW:
-			HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, GPIO_PIN_SET);
+			setYELLOW2();
 
 			if(timer2_flag == 1){
 				status2 = AUTO_RED;

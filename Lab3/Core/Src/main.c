@@ -22,6 +22,7 @@
 #include "buttonlab3.h"
 #include "timerlab3.h"
 #include "fsm_automatic.h"
+#include "fsm_manual.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -109,6 +110,7 @@ int main(void)
 	  testTimer();
 	  fsm_automatic_run1();
 	  fsm_automatic_run2();
+	  fsm_manual_run();
   }
 }
 

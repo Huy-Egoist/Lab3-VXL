@@ -24,4 +24,13 @@
 extern int status1;
 extern int status2;
 
+void setINIT();
+void setRED1();
+void setGREEN1();
+void setYELLOW1();
+void setRED2();
+void setGREEN2();
+void setYELLOW2();
+
+
 #endif /* INC_GLOBAL_H_ */
