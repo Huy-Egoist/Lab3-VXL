@@ -19,8 +19,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "timerlab3.h"
 #include "buttonlab3.h"
+#include "timerlab3.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -96,16 +96,19 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  HAL_TIM_Base_Start_IT(&htim2);
-  setTimer0(100);
+  HAL_TIM_Base_Start_IT (& htim2 ) ;
+  setTimer0(50);
+  void testTimer(){
+	  if(timer0_flag == 1){
+		  HAL_GPIO_TogglePin(LED_Timer_GPIO_Port, LED_Timer_Pin);
+		  setTimer0(50);
+	  }
+  }
 
   while (1)
   {
-	  // test timer 10ms
-	  if(timer0_flag == 1){
-		  HAL_GPIO_TogglePin(LED_Timer_GPIO_Port, LED_Timer_Pin);
-		  setTimer0(100);
-	  }
+	  //test LED_Timer 500ms
+	  testTimer();
   }
 }
 
@@ -209,7 +212,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LED_1_0_Pin|LED_1_1_Pin|LED1_2_Pin|LED_1_3_Pin
+  HAL_GPIO_WritePin(GPIOA, LED_1_0_Pin|LED_1_1_Pin|LED_1_2_Pin|LED_1_3_Pin
                           |LED_2_0_Pin|LED_2_1_Pin|LED_2_2_Pin|LED_2_3_Pin
                           |LED_3_0_Pin|LED_3_1_Pin|LED_3_2_Pin|LED_3_3_Pin
                           |LED_4_0_Pin|LED_4_1_Pin|LED_4_2_Pin|LED_4_3_Pin, GPIO_PIN_RESET);
@@ -219,11 +222,11 @@ static void MX_GPIO_Init(void)
                           |LED_YELLOW2_Pin|LED_MOD_Pin|LED_5_0_Pin|LED_5_1_Pin
                           |LED_5_2_Pin|LED_5_3_Pin|LED_RED1_Pin|LED_GREEN1_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : LED_1_0_Pin LED_1_1_Pin LED1_2_Pin LED_1_3_Pin
+  /*Configure GPIO pins : LED_1_0_Pin LED_1_1_Pin LED_1_2_Pin LED_1_3_Pin
                            LED_2_0_Pin LED_2_1_Pin LED_2_2_Pin LED_2_3_Pin
                            LED_3_0_Pin LED_3_1_Pin LED_3_2_Pin LED_3_3_Pin
                            LED_4_0_Pin LED_4_1_Pin LED_4_2_Pin LED_4_3_Pin */
-  GPIO_InitStruct.Pin = LED_1_0_Pin|LED_1_1_Pin|LED1_2_Pin|LED_1_3_Pin
+  GPIO_InitStruct.Pin = LED_1_0_Pin|LED_1_1_Pin|LED_1_2_Pin|LED_1_3_Pin
                           |LED_2_0_Pin|LED_2_1_Pin|LED_2_2_Pin|LED_2_3_Pin
                           |LED_3_0_Pin|LED_3_1_Pin|LED_3_2_Pin|LED_3_3_Pin
                           |LED_4_0_Pin|LED_4_1_Pin|LED_4_2_Pin|LED_4_3_Pin;
