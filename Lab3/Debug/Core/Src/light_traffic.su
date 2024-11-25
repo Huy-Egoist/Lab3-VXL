@@ -1,0 +1,8 @@
+light_traffic.c:11:6:INIT_TIME	4	static
+light_traffic.c:16:6:red1_green2	8	static
+light_traffic.c:20:6:red1_yellow2	8	static
+light_traffic.c:24:6:green1_red2	8	static
+light_traffic.c:28:6:yellow1_red2	8	static
+light_traffic.c:33:6:blinking_red	8	static
+light_traffic.c:37:6:blinking_green	8	static
+light_traffic.c:41:6:blinking_yellow	8	static

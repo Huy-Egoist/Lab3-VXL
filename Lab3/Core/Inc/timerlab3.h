@@ -8,14 +8,14 @@
 #ifndef INC_TIMERLAB3_H_
 #define INC_TIMERLAB3_H_
 
-extern int timer0_flag;
-extern int timer1_flag;
-extern int timer2_flag;
+#include "main.h"
 
-void setTimer0(int duration);
-void setTimer1(int duration);
-void setTimer2(int duration);
+extern int timer_cycle;
+extern int timer_flag[10];
+extern int timer_counter[10];
+void setTimer(int index, int counter);
 void timerRun();
+
 
 
 

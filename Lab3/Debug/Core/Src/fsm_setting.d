@@ -1,4 +1,5 @@
-Core/Src/timerlab3.o: ../Core/Src/timerlab3.c ../Core/Inc/timerlab3.h \
+Core/Src/fsm_setting.o: ../Core/Src/fsm_setting.c \
+ ../Core/Inc/fsm_setting.h ../Core/Inc/global.h ../Core/Inc/timerlab3.h \
  ../Core/Inc/main.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -22,7 +23,15 @@ Core/Src/timerlab3.o: ../Core/Src/timerlab3.c ../Core/Inc/timerlab3.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
- ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
+ ../Core/Inc/buttonlab3.h ../Core/Inc/fsm_automatic.h \
+ ../Core/Inc/fsm_manual.h ../Core/Inc/fsm_setting.h \
+ ../Core/Inc/led7_segment.h ../Core/Inc/light_traffic.h \
+ ../Core/Inc/global.h
+
+../Core/Inc/fsm_setting.h:
+
+../Core/Inc/global.h:
 
 ../Core/Inc/timerlab3.h:
 
@@ -75,3 +84,17 @@ Core/Src/timerlab3.o: ../Core/Src/timerlab3.c ../Core/Inc/timerlab3.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
+
+../Core/Inc/buttonlab3.h:
+
+../Core/Inc/fsm_automatic.h:
+
+../Core/Inc/fsm_manual.h:
+
+../Core/Inc/fsm_setting.h:
+
+../Core/Inc/led7_segment.h:
+
+../Core/Inc/light_traffic.h:
+
+../Core/Inc/global.h:

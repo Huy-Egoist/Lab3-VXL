@@ -12,10 +12,11 @@
 
 #define NORMAL_STATE GPIO_PIN_SET
 #define PRESSED_STATE GPIO_PIN_RESET
+#define NUM_BUTTONS	4
 
-extern int Button1_flag;
+extern int Button_flag[];
 
-int isButton1Pressed();
+int isButtonPressed();
 void getKeyInput();
 
 

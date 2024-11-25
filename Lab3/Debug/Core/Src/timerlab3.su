@@ -1,4 +1,2 @@
-timerlab3.c:19:6:setTimer0	16	static
-timerlab3.c:23:6:setTimer1	16	static
-timerlab3.c:27:6:setTimer2	16	static
-timerlab3.c:32:6:timerRun	4	static
+timerlab3.c:13:6:setTimer	16	static
+timerlab3.c:17:6:timerRun	16	static

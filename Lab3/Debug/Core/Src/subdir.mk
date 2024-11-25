@@ -8,7 +8,10 @@ C_SRCS += \
 ../Core/Src/buttonlab3.c \
 ../Core/Src/fsm_automatic.c \
 ../Core/Src/fsm_manual.c \
+../Core/Src/fsm_setting.c \
 ../Core/Src/global.c \
+../Core/Src/led7_segment.c \
+../Core/Src/light_traffic.c \
 ../Core/Src/main.c \
 ../Core/Src/stm32f1xx_hal_msp.c \
 ../Core/Src/stm32f1xx_it.c \
@@ -21,7 +24,10 @@ OBJS += \
 ./Core/Src/buttonlab3.o \
 ./Core/Src/fsm_automatic.o \
 ./Core/Src/fsm_manual.o \
+./Core/Src/fsm_setting.o \
 ./Core/Src/global.o \
+./Core/Src/led7_segment.o \
+./Core/Src/light_traffic.o \
 ./Core/Src/main.o \
 ./Core/Src/stm32f1xx_hal_msp.o \
 ./Core/Src/stm32f1xx_it.o \
@@ -34,7 +40,10 @@ C_DEPS += \
 ./Core/Src/buttonlab3.d \
 ./Core/Src/fsm_automatic.d \
 ./Core/Src/fsm_manual.d \
+./Core/Src/fsm_setting.d \
 ./Core/Src/global.d \
+./Core/Src/led7_segment.d \
+./Core/Src/light_traffic.d \
 ./Core/Src/main.d \
 ./Core/Src/stm32f1xx_hal_msp.d \
 ./Core/Src/stm32f1xx_it.d \

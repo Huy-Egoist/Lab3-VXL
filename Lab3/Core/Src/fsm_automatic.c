@@ -6,78 +6,92 @@
  */
 
 #include "fsm_automatic.h"
+#include "global.h"
 
-void fsm_automatic_run1(){
-	switch(status1){
+void fsm_automatic_run(){
+	switch(status){
 		case INIT:
 			setINIT();
-
-			status1 = AUTO_RED;
-			setTimer1(500);
+			INIT_TIME();
+			status = AUTO_RED1_GREEN2;
+			setTimer(1, 1000);
 			break;
-		case AUTO_RED:
-			setRED1();
-
-			if(timer1_flag == 1){
-				status1 = AUTO_GREEN;
-				setTimer1(300);
+		case AUTO_RED1_GREEN2:
+			red1_green2();
+			set7seg2(red_time);
+			set7seg4(green_time);
+			if(timer_flag[1] == 1){
+				red_time --;
+				green_time --;
+				if(green_time == 0) status = AUTO_RED1_YELLOW2;
+				setTimer(1, 1000);
 			}
-			if(isButton1Pressed() == 1){
-				status1 = MAN_RED;
-				setTimer1(1000);
-			}
-			break;
-		case AUTO_GREEN:
-			setGREEN1();
-
-			if(timer1_flag == 1){
-				status1 = AUTO_YELLOW;
-				setTimer1(200);
+			if(isButtonPressed(1) == 1){
+				setINIT();
+				status = MAN_RED;
+				setTimer(1, 999999);
+				setTimer(2, 50);
+				setTimer(3, 50);
 			}
 			break;
-		case AUTO_YELLOW:
-			setYELLOW1();
-
-			if(timer1_flag == 1){
-				status1 = AUTO_RED;
-				setTimer1(500);
+		case AUTO_RED1_YELLOW2:
+			red1_yellow2();
+			set7seg2(red_time);
+			set7seg4(yellow_time);
+			if(timer_flag[1] == 1){
+				red_time --;
+				yellow_time --;
+				if(yellow_time == 0){
+					INIT_TIME();
+					status = AUTO_GREEN1_RED2;
+				}
+				setTimer(1, 1000);
+			}
+			if(isButtonPressed(1) == 1){
+				setINIT();
+				status = MAN_RED;
+				setTimer(1, 999999);
+				setTimer(2, 50);
+				setTimer(3, 50);
 			}
 			break;
-		default:
-			break;
-	}
-}
-
-void fsm_automatic_run2(){
-	switch(status2){
-		case INIT:
-			setINIT();
-
-			status2 = AUTO_GREEN;
-			setTimer2(300);
-			break;
-		case AUTO_RED:
-			setRED2();
-
-			if(timer2_flag == 1){
-				status2 = AUTO_GREEN;
-				setTimer2(300);
+		case AUTO_GREEN1_RED2:
+			green1_red2();
+			set7seg2(green_time);
+			set7seg4(red_time);
+			if(timer_flag[1] == 1){
+				green_time --;
+				red_time --;
+				if(green_time == 0) status = AUTO_YELLOW1_RED2;
+				setTimer(1, 1000);
+			}
+			if(isButtonPressed(1) == 1){
+				setINIT();
+				status = MAN_RED;
+				setTimer(1, 999999);
+				setTimer(2, 50);
+				setTimer(3, 50);
 			}
 			break;
-		case AUTO_GREEN:
-			setGREEN2();
-
-			if(timer2_flag == 1){
-				status2 = AUTO_YELLOW;
-				setTimer2(200);
+		case AUTO_YELLOW1_RED2:
+			yellow1_red2();
+			set7seg2(yellow_time);
+			set7seg4(red_time);
+			if(timer_flag[1] == 1){
+				yellow_time --;
+				red_time --;
+				if(yellow_time == 0){
+					INIT_TIME();
+					status = AUTO_RED1_GREEN2;
+				}
+				setTimer(1, 1000);
 			}
-			break;
-		case AUTO_YELLOW:
-			setYELLOW2();
-
-			if(timer2_flag == 1){
-				status2 = AUTO_RED;
-				setTimer2(500);
+			if(isButtonPressed(1) == 1){
+				setINIT();
+				status = MAN_RED;
+				setTimer(1, 999999);
+				setTimer(2, 50);
+				setTimer(3, 50);
 			}
 			break;
 		default:

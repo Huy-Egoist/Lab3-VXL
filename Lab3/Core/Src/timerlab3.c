@@ -7,47 +7,20 @@
 
 #include "timerlab3.h"
 
-int timer0_counter = 0;
-int timer0_flag = 0;
-
-int timer1_counter = 0;
-int timer1_flag = 0;
-
-int timer2_counter = 0;
-int timer2_flag = 0;
-
-void setTimer0(int duration){
-	timer0_counter = duration;
-	timer0_flag = 0;
+int timer_flag[10];
+int timer_counter[10];
+int timer_cycle = 10;
+void setTimer(int index, int counter) {
+	timer_flag[index] = 0;
+	timer_counter[index] = counter / timer_cycle;
 }
-void setTimer1(int duration){
-	timer1_counter = duration;
-	timer1_flag = 0;
-}
-void setTimer2(int duration){
-	timer2_counter = duration;
-	timer2_flag = 0;
-}
-
-void timerRun(){
-	if (timer0_counter > 0){
-		timer0_counter --;
-		if(timer0_counter <= 0){
-			timer0_flag = 1;
-		}
-	}
-	if (timer1_counter > 0){
-		timer1_counter --;
-		if(timer1_counter <= 0){
-			timer1_flag = 1;
-		}
-	}
-	if (timer2_counter > 0){
-		timer2_counter --;
-		if(timer2_counter <= 0){
-			timer2_flag = 1;
+void timerRun() {
+	for (int i = 0; i < 10; i++) {
+		if (timer_counter[i] > 0) {
+			timer_counter[i]--;
+		} else {
+			timer_flag[i] = 1;
 		}
 	}
 }
-
 
