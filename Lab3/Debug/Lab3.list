@@ -2986,7 +2986,7 @@ void blinking_yellow(){
   HAL_TIM_Base_Start_IT (& htim2 ) ;
 
   //test timer
-  setTimer(0, 1000);
+  setTimer(0, 500);
   void testTimer_Led(){
  80015a8:	b580      	push	{r7, lr}
  80015aa:	b082      	sub	sp, #8
@@ -3020,8 +3020,8 @@ void blinking_yellow(){
  80015e0:	2110      	movs	r1, #16
  80015e2:	4806      	ldr	r0, [pc, #24]	; (80015fc <testTimer_Led.6049+0x54>)
  80015e4:	f000 fd87 	bl	80020f6 <HAL_GPIO_TogglePin>
-		  setTimer(0, 1000);
- 80015e8:	f44f 717a 	mov.w	r1, #1000	; 0x3e8
+		  setTimer(0, 500);
+ 80015e8:	f44f 71fa 	mov.w	r1, #500	; 0x1f4
  80015ec:	2000      	movs	r0, #0
  80015ee:	f000 f9f9 	bl	80019e4 <setTimer>
 	  }
@@ -3053,8 +3053,8 @@ int main(void)
   HAL_TIM_Base_Start_IT (& htim2 ) ;
  8001620:	480c      	ldr	r0, [pc, #48]	; (8001654 <main+0x50>)
  8001622:	f001 f9ad 	bl	8002980 <HAL_TIM_Base_Start_IT>
-  setTimer(0, 1000);
- 8001626:	f44f 717a 	mov.w	r1, #1000	; 0x3e8
+  setTimer(0, 500);
+ 8001626:	f44f 71fa 	mov.w	r1, #500	; 0x1f4
  800162a:	2000      	movs	r0, #0
  800162c:	f000 f9da 	bl	80019e4 <setTimer>
 	  if(isButtonPressed(0) == 1){
@@ -3859,7 +3859,7 @@ void SystemInit (void)
 
 int timer_flag[10];
 int timer_counter[10];
-int timer_cycle = 30;
+int timer_cycle = 10;
 void setTimer(int index, int counter) {
  80019e4:	b480      	push	{r7}
  80019e6:	b083      	sub	sp, #12
