@@ -20,6 +20,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "global.h"
+#include "scheduler.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -93,43 +94,42 @@ int main(void)
   HAL_TIM_Base_Start_IT (& htim2 ) ;
 
   //test timer
-  setTimer(0, 500);
-  void testTimer_Led(){
-	  HAL_GPIO_WritePin(LED_5_1_GPIO_Port, LED_5_1_Pin, GPIO_PIN_RESET);
-	  HAL_GPIO_WritePin(LED_5_2_GPIO_Port, LED_5_2_Pin, GPIO_PIN_RESET);
-	  HAL_GPIO_WritePin(LED_5_3_GPIO_Port, LED_5_3_Pin, GPIO_PIN_RESET);
-	  if(timer_flag[0] == 1){
-		  HAL_GPIO_TogglePin(LED_Timer_GPIO_Port, LED_Timer_Pin);
-		  HAL_GPIO_TogglePin(LED_5_0_GPIO_Port, LED_5_0_Pin);
-		  setTimer(0, 500);
-	  }
-  }
-  //test button
-  void testButton(){
-	  if(isButtonPressed(0) == 1){
-		  HAL_GPIO_TogglePin(LED_Test_GPIO_Port, LED_Test_Pin);
-	  }
-  }
-
+//  setTimer(0, 500);
+//  void testTimer_Led(){
+//	  HAL_GPIO_WritePin(LED_5_1_GPIO_Port, LED_5_1_Pin, GPIO_PIN_RESET);
+//	  HAL_GPIO_WritePin(LED_5_2_GPIO_Port, LED_5_2_Pin, GPIO_PIN_RESET);
+//	  HAL_GPIO_WritePin(LED_5_3_GPIO_Port, LED_5_3_Pin, GPIO_PIN_RESET);
+//	  if(timer_flag[0] == 1){
+//		  HAL_GPIO_TogglePin(LED_Timer_GPIO_Port, LED_Timer_Pin);
+//		  HAL_GPIO_TogglePin(LED_5_0_GPIO_Port, LED_5_0_Pin);
+//		  setTimer(0, 500);
+//	  }
+//  }
+//  //test button
+//  void testButton(){
+//	  if(isButtonPressed(0) == 1){
+//		  HAL_GPIO_TogglePin(LED_Test_GPIO_Port, LED_Test_Pin);
+//	  }
+//  }
   status = INIT;
+  SCH_Add_Task(fsm_automatic_run, 0, 100);
+  SCH_Add_Task(fsm_manual_run, 0, 1);
+  SCH_Add_Task(fsm_setting_run, 0, 1);
   while (1)
   {
-	  //test LED_Timer 500ms
-	  testTimer_Led();
-	  //test button
-	  testButton();
-
-
+//	  //test LED_Timer 500ms
+//	  testTimer_Led();
+//	  //test button
+//	  testButton();
 
 	  //main
-	  fsm_automatic_run();
-	  fsm_manual_run();
-	  fsm_setting_run();
+	  SCH_Dispatch_Tasks();
   }
 }
 
 void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
 {
+	SCH_Update();
 	timerRun();
 	getKeyInput();
 }
